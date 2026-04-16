@@ -530,6 +530,11 @@ function App() {
     }
   };
 
+  // Utility function to resolve asset URLs correctly in Vite production build
+  const getAssetUrl = (path) => {
+    return new URL(`/src/assets/${path}`, import.meta.url).href;
+  };
+
   const handleDownload = async () => {
     if (!mapRef.current) return;
 
@@ -658,7 +663,7 @@ function App() {
                 <div className="flex-1 flex flex-col gap-5 rounded-3xl border border-cyan-500/20 bg-cyan-950/10 backdrop-blur-md px-6 py-7 shadow-[0_20px_60px_rgba(0,188,212,0.1)] hover:bg-cyan-950/20 transition-colors h-full w-full">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 w-full">
                     <img
-                      src={mapData.profiles[0].image ? `/src/assets/${mapData.profiles[0].image}` : avatarPlaceholder}
+                      src={mapData.profiles[0].image ? getAssetUrl(mapData.profiles[0].image) : avatarPlaceholder}
                       alt={mapData.profiles[0].avatarAlt}
                       className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full object-cover border-2 border-cyan-500/50 shadow-[0_0_20px_rgba(0,188,212,0.25)]"
                     />
@@ -695,7 +700,7 @@ function App() {
                     {/* Export Mode Only: QR Code and WeChat ID */}
                     <div className="export-only hidden flex-col items-center gap-3 mt-2 w-full">
                       <div className="bg-white p-2 rounded-xl shadow-lg border border-white/10 relative">
-                        <img src={`/src/assets/${mapData.profiles[0].qrCode}`} alt="微信二维码" className="w-32 h-32 object-contain" />
+                        <img src={getAssetUrl(mapData.profiles[0].qrCode)} alt="微信二维码" className="w-32 h-32 object-contain" />
                         <div className="absolute -bottom-3 -right-3 bg-cyan-500 text-[#041014] text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full shadow-md">
                           扫码诊断
                         </div>
@@ -712,7 +717,7 @@ function App() {
                 <div className="flex-1 flex flex-col gap-5 rounded-3xl border border-emerald-500/20 bg-emerald-950/10 backdrop-blur-md px-6 py-7 shadow-[0_20px_60px_rgba(76,175,80,0.1)] hover:bg-emerald-950/20 transition-colors h-full w-full">
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 w-full">
                     <img
-                      src={mapData.profiles[1].image ? `/src/assets/${mapData.profiles[1].image}` : avatarPlaceholder}
+                      src={mapData.profiles[1].image ? getAssetUrl(mapData.profiles[1].image) : avatarPlaceholder}
                       alt={mapData.profiles[1].avatarAlt}
                       className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full object-cover border-2 border-emerald-500/50 shadow-[0_0_20px_rgba(76,175,80,0.25)]"
                     />
@@ -749,7 +754,7 @@ function App() {
                     {/* Export Mode Only: QR Code and WeChat ID */}
                     <div className="export-only hidden flex-col items-center gap-3 mt-2 w-full">
                       <div className="bg-white p-2 rounded-xl shadow-lg border border-white/10 relative">
-                        <img src={`/src/assets/${mapData.profiles[1].qrCode}`} alt="微信二维码" className="w-32 h-32 object-contain" />
+                        <img src={getAssetUrl(mapData.profiles[1].qrCode)} alt="微信二维码" className="w-32 h-32 object-contain" />
                         <div className="absolute -bottom-3 -right-3 bg-emerald-500 text-[#041108] text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full shadow-md">
                           扫码诊断
                         </div>
@@ -816,7 +821,7 @@ function App() {
 
                 <div className="mt-5 w-full rounded-2xl border border-white/10 bg-white/[0.02] p-4 flex flex-col items-center justify-center relative group">
                   <div className={`absolute inset-0 bg-${themeColor}-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity`}></div>
-                  <img src={`/src/assets/${profile.qrCode}`} alt={`${profile.name}微信二维码`} className="w-48 h-48 md:w-56 md:h-56 object-contain rounded-xl shadow-lg border border-white/5 bg-white relative z-10" />
+                  <img src={getAssetUrl(profile.qrCode)} alt={`${profile.name}微信二维码`} className="w-48 h-48 md:w-56 md:h-56 object-contain rounded-xl shadow-lg border border-white/5 bg-white relative z-10" />
                 </div>
 
                 <div className="mt-5 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3.5 text-center relative overflow-hidden">
