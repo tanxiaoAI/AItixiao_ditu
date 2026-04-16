@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyan-50: #e0f7fa;
+  --color-cyan-100: #b2ebf2;
+  --color-cyan-400: #26c6da;
+  --color-cyan-500: #00bcd4;
+  --color-cyan-600: #00acc1;
+  --color-cyan-900: #006064;
+  --color-cyan-950: #003333;
+  
+  --color-orange-50: #fff3e0;
+  --color-orange-100: #ffe0b2;
+  --color-orange-400: #ffa726;
+  --color-orange-500: #ff9800;
+  --color-orange-600: #fb8c00;
+  --color-orange-900: #e65100;
+  --color-orange-950: #331100;
+  
+  --color-emerald-50: #e8f5e9;
+  --color-emerald-100: #c8e6c9;
+  --color-emerald-400: #66bb6a;
+  --color-emerald-500: #4caf50;
+  --color-emerald-600: #43a047;
+  --color-emerald-900: #1b5e20;
+  --color-emerald-950: #003311;
+
+  --color-pink-50: #fce4ec;
+  --color-pink-100: #f8bbd0;
+  --color-pink-400: #ec407a;
+  --color-pink-500: #e91e63;
+  --color-pink-600: #d81b60;
+  --color-pink-900: #880e4f;
+  --color-pink-950: #330022;
+
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #eeeeee;
+  --color-gray-300: #e0e0e0;
+  --color-gray-400: #bdbdbd;
+  --color-gray-500: #9e9e9e;
+  --color-gray-800: #424242;
+  --color-gray-900: #212121;
+  
+  --font-sans: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: "Smiley Sans", "PingFang SC", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: #050505;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.3em;
+}
+
+.map-container {
+  background-color: #0a0a0a;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.watermark-export-only {
+  display: none;
+}
+
+.export-mode {
+  width: 1200px !important;
+  max-width: 1200px !important;
+}
+
+.export-mode .watermark-export-only {
+  display: block !important;
+}
+
+.export-mode .module-card {
+  flex-direction: row !important;
+}
+
+.export-mode .module-title-bar {
+  width: 96px !important;
+  min-width: 96px !important;
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
+}
+
+.export-mode .mobile-title,
+.export-mode .flow-arrow-mobile {
+  display: none !important;
+}
+
+.export-mode .desktop-title {
+  display: block !important;
+}
+
+.export-mode .flow-arrow-desktop {
+  display: flex !important;
+}
+
+.export-mode .module-top-flow,
+.export-mode .knowledge-node,
+.export-mode .hero-profile {
+  flex-direction: row !important;
+}
+
+.export-mode .module-top-flow {
+  gap: 1.5rem !important;
+}
+
+.export-mode .knowledge-title-col {
+  width: 22% !important;
+  min-width: 22% !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: none !important;
+  padding-right: 1.5rem !important;
+  padding-bottom: 0 !important;
+}
+
+.export-mode .knowledge-grid,
+.export-mode .cta-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.export-mode .cta-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.export-mode .hero-profile-copy {
+  text-align: left !important;
+}
+
+.export-mode .export-only {
+  display: flex !important;
+}
+
+/* Print specific styles to ensure good export quality */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Hide scrollbar for elements with no-scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
